@@ -4,7 +4,7 @@ import CoreContainer from './components/core-sample/Container'
 import SegmentationsPanel from './components/segmentations-panel/SegmentationsPanel'
 
 function App() {
-  const [segmentSelected, setSegmentSelected] = useState<string>("");
+  const [segmentSelected, setSegmentSelected] = useState<string>("FRACTURE");
 
   const handleSelectingSegmentation = (value: string) => {
     setSegmentSelected(value);
