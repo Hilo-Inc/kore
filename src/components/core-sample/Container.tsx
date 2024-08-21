@@ -15,7 +15,7 @@ const Container: React.FC<ContainerProps> = ({className}) => {
     const [nextId, setNextId] = useState(1);
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [draggingLineId, setDraggingLineId] = useState<number | null>(null);
-    const timelineRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const addLine = () => {
         const newLine = { id: nextId, position: 0 };
@@ -34,10 +34,10 @@ const Container: React.FC<ContainerProps> = ({className}) => {
     };
 
     const handleMouseMove = (event: React.MouseEvent) => {
-        if (!isDragging || draggingLineId === null || !timelineRef.current) return;
+        if (!isDragging || draggingLineId === null || !containerRef.current) return;
 
-        const timelineRect = timelineRef.current.getBoundingClientRect();
-        const newPosition = event.clientX - timelineRect.left;
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const newPosition = event.clientX - containerRect.left;
 
         setLines(lines.map(line =>
             line.id === draggingLineId ? { ...line, position: newPosition } : line
@@ -47,7 +47,7 @@ const Container: React.FC<ContainerProps> = ({className}) => {
     return (
         <div className={className}>
             <div
-                ref={timelineRef}
+                ref={containerRef}
                 style={{
                     width: "100%",
                     height: "200px",

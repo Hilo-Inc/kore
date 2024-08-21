@@ -17,11 +17,11 @@ const CORE_QUALITY = {
 
 const BLOCKS = {
     BLOCK: 'BLOCK',
-    RUN_BLOCK: 'RUN_BLOCK'
+    RUN_BLOCK: 'RUN BLOCK'
 }
 
 const DEPTH = {
-    DEPTH_MARK: 'DEPTH_MARK'
+    DEPTH_MARK: 'DEPTH MARK'
 }
 
 const WEATHERED = {
@@ -39,8 +39,8 @@ const segColors = {
     "DAMAGED 3": 'bg-red-300',
     "DAMAGED 4": 'bg-red-400',
     "BLOCK": 'bg-emerald-300',
-    "RUN_BLOCK": 'bg-emerald-700',
-    "DEPTH_MARK": 'bg-blue-700',
+    "RUN BLOCK": 'bg-emerald-700',
+    "DEPTH MARK": 'bg-blue-700',
     "WEATHERED 1": 'bg-amber-200',
     "WEATHERED 2": 'bg-amber-100'
 }
