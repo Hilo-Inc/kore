@@ -1,24 +1,23 @@
 import React, { useState, useRef } from "react";
 import Segmentations from "./Segmentations";
-
-interface Line {
-    id: number;
-    position: number;
-}
+import { Line, segColors } from "../../types/types";
 
 interface ContainerProps {
     className: string;
+    segmentSelected: string;
 }
 
-const Container: React.FC<ContainerProps> = ({ className }) => {
+const Container: React.FC<ContainerProps> = ({ className, segmentSelected }) => {
     const [lines, setLines] = useState<Line[]>([]);
     const [nextId, setNextId] = useState(1);
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [draggingLineId, setDraggingLineId] = useState<number | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const lineColor = segColors[segmentSelected as keyof typeof segColors]
+    
 
     const addLine = () => {
-        const newLine = { id: nextId, position: 0 };
+        const newLine = { id: nextId, position: 0, lineColor };
         setLines([...lines, newLine]);
         setNextId(nextId + 1);
     };
