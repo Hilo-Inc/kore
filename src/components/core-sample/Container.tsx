@@ -1,5 +1,8 @@
 import React, { useState, useRef } from "react";
 import Segmentations from "./Segmentations";
+//import backgroundImage from './images/core-sample-003.jpg';
+
+
 
 interface Line {
     id: number;
@@ -10,7 +13,14 @@ interface ContainerProps {
     className: string;
 }
 
-const Container: React.FC<ContainerProps> = ({className}) => {
+// const containStyle = {
+//     backgroundImage: `url(${backgroundImage})`,
+//     backgroundSize: 'cover', // Cover the entire container
+//     backgroundPosition: 'center', // Center the image
+//     backgroundRepeat: 'no-repeat', // Avoid repeating the image
+// }
+
+const Container: React.FC<ContainerProps> = ({ className }) => {
     const [lines, setLines] = useState<Line[]>([]);
     const [nextId, setNextId] = useState(1);
     const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -45,23 +55,15 @@ const Container: React.FC<ContainerProps> = ({className}) => {
     };
 
     return (
-        <div className={className}>
-            <div
-                ref={containerRef}
-                style={{
-                    width: "100%",
-                    height: "200px",
-                    position: "relative",
-                    background: "#f0f0f0",
-                    boxSizing: "border-box",
-                    userSelect: "none",
-                }}
-                onMouseMove={handleMouseMove}
-                onMouseUp={stopDragging}
-                onMouseLeave={stopDragging}
-            >
-                <Segmentations lines={lines} startDragging={startDragging} />
-                <button
+        <div
+            className={className}
+            ref={containerRef}
+            onMouseMove={handleMouseMove}
+            onMouseUp={stopDragging}
+            onMouseLeave={stopDragging}
+        >
+            <Segmentations lines={lines} startDragging={startDragging} />
+            <button
                 onClick={addLine}
                 style={{
                     position: "relative",
@@ -76,7 +78,6 @@ const Container: React.FC<ContainerProps> = ({className}) => {
             >
                 ||
             </button>
-            </div>
         </div>
     );
 };
