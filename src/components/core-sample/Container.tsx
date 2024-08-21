@@ -1,8 +1,5 @@
 import React, { useState, useRef } from "react";
 import Segmentations from "./Segmentations";
-//import backgroundImage from './images/core-sample-003.jpg';
-
-
 
 interface Line {
     id: number;
@@ -12,13 +9,6 @@ interface Line {
 interface ContainerProps {
     className: string;
 }
-
-// const containStyle = {
-//     backgroundImage: `url(${backgroundImage})`,
-//     backgroundSize: 'cover', // Cover the entire container
-//     backgroundPosition: 'center', // Center the image
-//     backgroundRepeat: 'no-repeat', // Avoid repeating the image
-// }
 
 const Container: React.FC<ContainerProps> = ({ className }) => {
     const [lines, setLines] = useState<Line[]>([]);
