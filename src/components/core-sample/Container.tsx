@@ -6,7 +6,11 @@ interface Line {
     position: number;
 }
 
-const Container: React.FC = () => {
+interface ContainerProps {
+    className: string;
+}
+
+const Container: React.FC<ContainerProps> = ({className}) => {
     const [lines, setLines] = useState<Line[]>([]);
     const [nextId, setNextId] = useState(1);
     const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -41,27 +45,12 @@ const Container: React.FC = () => {
     };
 
     return (
-        <div className="parent-container">
-            <button
-                onClick={addLine}
-                style={{
-                    position: "absolute",
-                    bottom: 10,
-                    left: 10,
-                    padding: "5px 10px",
-                    background: "#007bff",
-                    color: "#fff",
-                    border: "none",
-                    cursor: "pointer",
-                }}
-            >
-                Add Line
-            </button>
+        <div className={className}>
             <div
                 ref={timelineRef}
                 style={{
                     width: "100%",
-                    height: "100px",
+                    height: "200px",
                     position: "relative",
                     background: "#f0f0f0",
                     boxSizing: "border-box",
@@ -72,6 +61,21 @@ const Container: React.FC = () => {
                 onMouseLeave={stopDragging}
             >
                 <Segmentations lines={lines} startDragging={startDragging} />
+                <button
+                onClick={addLine}
+                style={{
+                    position: "relative",
+                    top: 10,
+                    left: 10,
+                    padding: "5px 10px",
+                    background: "#007bff",
+                    color: "#fff",
+                    border: "none",
+                    cursor: "pointer",
+                }}
+            >
+                ||
+            </button>
             </div>
         </div>
     );
